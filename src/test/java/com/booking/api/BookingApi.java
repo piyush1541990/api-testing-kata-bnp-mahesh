@@ -42,4 +42,38 @@ public class BookingApi {
                 .get("/booking/actuator/health");
     }
 
+
+    // PUT /booking/{id} - full update, token required
+    public Response updateBooking(int id, Booking booking, String token) {
+        return given()
+                .baseUri(BASE_URL)
+                .header("Content-Type", "application/json")
+                .header("Accept", "application/json")
+                .cookie("token", token)
+                .body(booking)
+                .when()
+                .put("/booking/" + id);
+    }
+
+    // PATCH /booking/{id} - partial update, token required
+    public Response patchBooking(int id, String body, String token) {
+        return given()
+                .baseUri(BASE_URL)
+                .header("Content-Type", "application/json")
+                .header("Accept", "application/json")
+                .cookie("token", token)
+                .body(body)
+                .when()
+                .patch("/booking/" + id);
+    }
+
+    // DELETE /booking/{id} - token required, returns 201 on success
+    public Response deleteBooking(int id, String token) {
+        return given()
+                .baseUri(BASE_URL)
+                .cookie("token", token)
+                .when()
+                .delete("/booking/" + id);
+    }
+
 }
