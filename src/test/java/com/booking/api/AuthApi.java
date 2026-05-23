@@ -4,11 +4,10 @@ import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
 
-// handles login and getting tokens from API
-
+// handles login - we need a token for GET, PUT, DELETE booking requests
 public class AuthApi {
 
-    private static final String BASE_URL = "https://automationintesting.online/api";
+    private static final String BASE_URL = "https://automationintesting.online";
 
     public Response login(String username, String password) {
         String body = "{ \"username\": \"" + username + "\", \"password\": \"" + password + "\" }";
@@ -17,10 +16,10 @@ public class AuthApi {
                 .header("Content-Type", "application/json")
                 .body(body)
                 .when()
-                .post("/auth/login");
+                .post("/api/auth/login");
     }
 
-    // logs in as admin to get token string
+    // logs in as admin and returns just the token string
     public String getAdminToken() {
         return login("admin", "password")
                 .jsonPath()
@@ -28,5 +27,3 @@ public class AuthApi {
     }
 
 }
-
-

@@ -15,10 +15,6 @@ Java 17 and Maven installed, then run:
 ```
 mvn test
 ```
-### 🖥️ Run from IntelliJ IDE
-```bash
-Right-click on `RunnerTest.java` → **Run 'TestRunner.java'**
-```
 Test report will be at: `target/cucumber-reports.html`
 
 ## Project structure
