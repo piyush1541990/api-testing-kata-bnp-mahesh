@@ -4,7 +4,7 @@ import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
 
-// handles login and getting tokens from API endpoint
+// handles login and getting tokens from API
 
 public class AuthApi {
 
